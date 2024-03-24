@@ -115,7 +115,9 @@ Solution
 
 ## Initial design
 
-In a distributed system, clients across the globe generate events by requesting services from different serving nodes. The nodes generate logs while handling each of the requests. These logs are accumulated on the respective nodes.
+In a distributed system, clients across the globe generate events by requesting services from different serving nodes.
+The nodes generate logs while handling each of the requests.
+These logs are accumulated on the respective nodes.
 
 In addition to the building blocks, let’s list the major components of our system:
 - Log accumulator: An agent that collects logs from each node and dumps them into storage. So, if we want to know about a particular event, we don’t need to visit each node, and we can fetch them from our storage.
@@ -123,7 +125,10 @@ In addition to the building blocks, let’s list the major components of our sys
 - Log indexer: The growing number of log files affects the searching ability. The log indexer will use the distributed search to search efficiently.
 - Visualizer: The visualizer is used to provide a unified view of all the logs.
 
+![Distributed Logging Architecture](basic/images/distributed_logging_architecture_basic.png)
 
+There are millions of servers in a distributed system, and using a single log accumulator severely affects scalability.
+Let’s learn how we’ll scale our system.
 
 
 

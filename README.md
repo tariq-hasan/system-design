@@ -34,6 +34,11 @@
 
 ## Distributed Logging
 
+- [Distributed Logging](basic/distributed_logging.md)
+
+![Distributed Logging Architecture](basic/images/distributed_logging_architecture.png)
+
+
 ## Distributed Task Scheduler
 
 ## Sharded Counters
