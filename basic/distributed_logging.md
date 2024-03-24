@@ -125,7 +125,7 @@ In addition to the building blocks, let’s list the major components of our sys
 - Log indexer: The growing number of log files affects the searching ability. The log indexer will use the distributed search to search efficiently.
 - Visualizer: The visualizer is used to provide a unified view of all the logs.
 
-![Distributed Logging Architecture](basic/images/distributed_logging_architecture_basic.png)
+![Distributed Logging Architecture](images/distributed_logging_architecture_basic.png)
 
 There are millions of servers in a distributed system, and using a single log accumulator severely affects scalability.
 Let’s learn how we’ll scale our system.
