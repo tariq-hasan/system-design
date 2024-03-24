@@ -11,9 +11,9 @@
 <br/>
 
 - Use cases
-  - understand the flow of an event in a distributed system
-  - pinpoint when and how a system failed or was compromised and find out the root cause of the failure or breach
-  - decrease the meantime to repair a system
+  - Understand the flow of an event in a distributed system.
+  - Pinpoint when and how a system failed or was compromised and find out the root cause of the failure or breach.
+  - Decrease the meantime to repair a system.
 
 <br/>
 
@@ -21,11 +21,12 @@
 
 ## Restrain the log size
 
-- The number of logs increases over time.
-- At a time, perhaps hundreds of concurrent messages need to be logged.
-- But the question is, are they all important enough to be logged?
-- To solve this, logs have to be structured.
-- We need to decide what to log into the system on the application or logging level.
+- Problem
+  - The number of logs increases over time.
+  - At a time, hundreds of concurrent messages need to be logged.
+  - But not all are important enough to be logged.
+Solution
+- Structure logs to help decide what to log into the system on the application or logging level.
 
 ### Use sampling
 
@@ -33,8 +34,8 @@
   - e.g. large systems like Facebook where billions of events happen per second
   - e.g. situation where we have lots of messages from the same set of events
   - e.g. people commenting on a post, where Person X commented on Person Y’s post, then Person Z commented on Person Y’s post, etc.
-  - Use a sampler service (with a sampling threshold and strategy) that logs only a smaller and representative set of messages from a larger chunk
-  - Categorize the types of messages and apply a filter that identifies the important messages and logs only those messages to the system
+  - Use a sampler service (with a sampling threshold and strategy) that logs only a smaller and representative set of messages from a larger chunk.
+  - Categorize the types of messages and apply a filter that identifies the important messages and logs only those messages to the system.
 
 <br/>
 
@@ -65,7 +66,7 @@
 - For secure data log encrypted data.
 - Avoid logging personally identifiable information (PII), such as names, addresses, emails, and so on.
 - Avoid logging sensitive information like credit card numbers, passwords, and so on.
-- Avoid excessive information. Logging all information is unnecessary. It only takes up more space and affects performance. Logging, being an I/O-heavy operation, has its performance penalties.
+- Avoid excessive information. Logging all information is unnecessary and only takes up more space and affects performance (logging is an I/O-heavy operation).
 - The logging mechanism should be secure and not vulnerable because logs contain the application’s flow, and an insecure logging mechanism is vulnerable to hackers.
 
 ### Vulnerability in logging infrastructure
@@ -78,19 +79,53 @@
 
 # Design of a Distributed Logging Service
 
-- We will design a system that allows services in a distributed system to log their events efficiently.
+- System that allows services in a distributed system to log their events efficiently
+- System should log all activities or messages (without incorporating sampling ability)
 
 ## Requirements
 
 ### Functional requirements
 
+- Writing logs: The services of the distributed system must be able to write into the logging system.
+- Searchable logs: It should be effortless for a system to find logs. Similarly, the application’s flow from end-to-end should also be effortless.
+- Storing logging: The logs should reside in distributed storage for easy access.
+- Centralized logging visualizer: The system should provide a unified view of globally separated services.
+
 ### Non-functional requirements
+
+- Low latency: Logging is an I/O-intensive operation that is often much slower than CPU operations. We need to design the system so that logging is not on an application’s critical path.
+- Scalability: We want our logging system to be scalable. It should be able to handle the increasing amounts of logs over time and a growing number of concurrent users.
+- Availability: The logging system should be highly available to log the data.
 
 ## Building blocks we will use
 
+- Pub-sub system to handle the huge size of logs
+- Distributed search to query the logs efficiently
+
 ## API design
 
+- Write a message
+  - write(unique_ID, message_to_be_logged)
+  - unique_ID is a numeric ID containing application-id, service-id, and a time stamp.
+  - message_to_be_logged is the log message stored against a unique key.
+
+- Search log
+  - searching(keyword)
+  - keyword is used for finding logs containing the keyword.
+
 ## Initial design
+
+In a distributed system, clients across the globe generate events by requesting services from different serving nodes. The nodes generate logs while handling each of the requests. These logs are accumulated on the respective nodes.
+
+In addition to the building blocks, let’s list the major components of our system:
+- Log accumulator: An agent that collects logs from each node and dumps them into storage. So, if we want to know about a particular event, we don’t need to visit each node, and we can fetch them from our storage.
+- Storage: The logs need to be stored somewhere after accumulation. We’ll choose blob storage to save our logs.
+- Log indexer: The growing number of log files affects the searching ability. The log indexer will use the distributed search to search efficiently.
+- Visualizer: The visualizer is used to provide a unified view of all the logs.
+
+
+
+
 
 ## Logging at various levels
 
