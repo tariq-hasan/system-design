@@ -38,7 +38,6 @@
 
 ![Distributed Logging Architecture](basic/images/distributed_logging_architecture_basic.png)
 
-
 ## Distributed Task Scheduler
 
 ## Sharded Counters
