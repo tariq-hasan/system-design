@@ -34,6 +34,34 @@
 
 # Resource Records
 
+- DNS records are pieces of information hosted on DNS servers that provide details about domains.
+
+<br/>
+
+- The DNS database stores domain name to IP address mappings in the form of resource records.
+- The RR is the smallest unit of information that users request from the name servers.
+- There are different types of RRs.
+  - Type: NS (name server)
+    - Description: Provides the hostname that is the authoritative DNS for a domain name
+    - Name: Domain name
+    - Value: Hostname
+    - Example (Type, Name, Value): (NS, educative.io, dns.educative.io)
+  - Type: A (address) for IPv4; AAAA for IPv6
+    - Description: Provides the hostname to IP address mapping
+    - Name: Hostname
+    - Value: IP address
+    - Example (Type, Name, Value): (A, relay1.main.educative.io, 104.18.2.119)
+  - Type: CNAME (canonical name)
+    - Description: Provides the mapping from alias to canonical hostname
+    - Name: Hostname
+    - Value: Canonical name
+    - Example (Type, Name, Value): (CNAME, educative.io, server1.primary.educative.io)
+  - Type: MX (mail exchange)
+    - Description: Provides the mapping of mail server from alias to canonical hostname
+    - Name: Hostname
+    - Value: Canonical name
+    - Example (Type, Name, Value): (MX, mail.educative.io, mailserver1.backup.educative.io)
+
 ## A Record
 
 ## CNAME Record
