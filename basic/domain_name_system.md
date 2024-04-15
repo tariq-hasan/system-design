@@ -22,6 +22,16 @@
 
 # Forwarding Query
 
+![DNS execution flow](images/domain_name_system_forwarding_query.png)
+
+- The user requests to visit a website by entering its URL in the browser
+- The browser requests the ISP to forward the DNS query to resolve the request for the IP address
+- The ISP forwards the DNS query to the DNS infrastructure
+- The DNS infrastructure responds with a list of IP addresses against the domain name
+- The IP address(es) reach the browser
+- The browser sends an HTTP request on the received IP address
+- The ISP forwards the HTTP request to the web server
+
 # Resource Records
 
 ## A Record
