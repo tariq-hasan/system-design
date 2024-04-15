@@ -1,5 +1,25 @@
 # Domain Name System
 
+- Computers are uniquely identified by IP addresses - for example, 104.18.2.119 is an IP address.
+- We use IP addresses to visit a website hosted on a machine.
+- Humans cannot easily remember IP addresses to visit domain names (an example domain name being educative.io), so we need a phone book-like repository that can maintain all mappings of domain names to IP addresses.
+- DNS is the Internet’s naming service that maps human-friendly domain names to machine-readable IP addresses.
+
+<br/>
+
+- The service of DNS is transparent to users.
+- When a user enters a domain name in the browser, the browser has to translate the domain name to IP address by asking the DNS infrastructure.
+- Once the desired IP address is obtained, the user’s request is forwarded to the destination web server.
+
+<br/>
+
+- DNS focuses on how to design hierarchical and distributed naming systems for computers connected to the Internet via different Internet protocols.
+- When you navigate to twitter.com, your web browser will send an HTTP request to Twitter’s servers to download the latest content.
+- It will then render that content.
+- In order to send this HTTP request, your browser will need the IP address of Twitter’s web server (or Twitter’s load balancer).
+- DNS is the technology that makes this possible.
+- It serves as the phonebook of the Internet, where it maps between the human-readable web URL (www.twitter.com) and the machine-readable, most up-to-date IP address (104.244.42.193).
+
 # Forwarding Query
 
 # Resource Records
