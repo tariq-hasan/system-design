@@ -7,7 +7,7 @@ This repository contains a collection of markdown files covering various topics 
 - [Fallacies of Distributed Systems](fallacies_of_distributed_systems.md): Common misconceptions about distributed systems and their implications.
 - [Difficulties Designing Distributed Systems](difficulties_designing_distributed_systems.md): Challenges and complexities involved in designing distributed systems.
 - [Safety Guarantees in Distributed Systems](safety_guarantees_in_distributed_systems.md): Importance of safety guarantees and techniques for achieving them in distributed systems.
-- [Measures of Correctness in Distributed Systems](measures_of_correctness_in_distributed_systems.md): Discover different measures of correctness and how they apply to distributed systems.
+- [Measures of Correctness in Distributed Systems](measures_of_correctness_in_distributed_systems.md): Measures of correctness and how they apply to distributed systems.
 - [System Models](system_models.md): Models and frameworks for understanding and analyzing distributed systems.
 - [Spectrum of Failure Models](spectrum_of_failure_models.md): Failure models and their impact on distributed systems.
 - [Message Delivery](message_delivery.md): Challenges and mechanisms for ensuring reliable message delivery in distributed systems.
@@ -15,7 +15,6 @@ This repository contains a collection of markdown files covering various topics 
 - [Stateless and Stateful Systems](stateless_and_stateful_systems.md): Statelessness and statefulness in distributed systems.
 - [CAP Theorem](cap_theorem.md): Implications of the CAP theorem on distributed systems' design and architecture.
 - [PACELC Theorem](pacelc_theorem.md): PACELC theorem and its role in distributed systems' decision-making.
-- [Data Structures](data_structures.md): Data structures and algorithms commonly used in distributed systems for efficient data management.
 - [Algorithms](algorithms.md): Algorithms and techniques used in distributed systems for various tasks, such as consensus, replication, and coordination.
 - [Patterns](patterns.md): Design patterns and best practices for building scalable, resilient, and performant distributed systems.
 - [Trade-offs to Meet Functional Requirements](trade-offs_to_meet_functional_requirements.md): Trade-offs involved in designing distributed systems to meet functional requirements.
