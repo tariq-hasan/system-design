@@ -4,7 +4,6 @@ This repository contains a collection of markdown files covering various topics 
 
 ## Contents
 
-- [Papers](papers): A curated list of papers covering fundamental concepts, challenges, and recent advancements in distributed systems.
 - [Fallacies of Distributed Systems](fallacies_of_distributed_systems.md): Common misconceptions about distributed systems and their implications.
 - [Difficulties Designing Distributed Systems](difficulties_designing_distributed_systems.md): Challenges and complexities involved in designing distributed systems.
 - [Safety Guarantees in Distributed Systems](safety_guarantees_in_distributed_systems.md): Importance of safety guarantees and techniques for achieving them in distributed systems.
