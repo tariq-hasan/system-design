@@ -106,6 +106,15 @@
 
 - Goal: Multi-master replication, also known as symmetric or peer-to-peer replication, allows multiple replicas to function as independent masters, each capable of processing both read and write operations.
 - Process: In a multi-master setup, all replicas are considered equal peers, and each can accept write operations from clients. Changes made to any master are propagated asynchronously to other masters, ensuring data consistency across the system.
+- Characteristics:
+  - Favors higher availability and performance over strict data consistency.
+  - All replicas are equal and can accept write requests, responsible for propagating data modifications to the rest of the group.
+  - No single master node serializes requests; write requests are concurrently handled by all nodes.
+  - Nodes might disagree on the order of some requests, leading to conflicts.
+  - Nodes need to resolve conflicts to maintain system operation.
+- Example:
+  - Applications prioritize availability and performance over data consistency or transactional semantics.
+  - E-commerce shopping cart: Customers need continuous access to their cart, and performance is crucial. Consistency can be compromised as long as conflicts are reconciled during the checkout process.
 - Benefits:
   - Scalability: Distributes write operations across multiple nodes, enabling better scalability and higher throughput compared to single-master setups.
   - High Availability: Multiple masters are available to process writes, allowing the system to continue operating even if one or more masters fail.
@@ -117,26 +126,6 @@
   - Network Partition Handling:
     - Need to handle network partitions gracefully to ensure availability and consistency.
     - Techniques such as quorum-based replication or automatic failover mechanisms can maintain system operation in the presence of network partitions.
-
-## Single-Master Replication vs Multi-Master Replication
-
-- Single-Master Replication
-  - Advantages:
-    - Easy to implement and operate.
-    - Can support transactions and hide the distributed nature of the system, especially with synchronous replication.
-  - Limitations:
-    - Performance, scalability, and availability may be constrained.
-
-- Multi-Master Replication
-  - Characteristics:
-    - Favors higher availability and performance over strict data consistency.
-    - All replicas are equal and can accept write requests, responsible for propagating data modifications to the rest of the group.
-    - No single master node serializes requests; write requests are concurrently handled by all nodes.
-    - Nodes might disagree on the order of some requests, leading to conflicts.
-    - Nodes need to resolve conflicts to maintain system operation.
-  - Example:
-    - Applications prioritize availability and performance over data consistency or transactional semantics.
-    - E-commerce shopping cart: Customers need continuous access to their cart, and performance is crucial. Consistency can be compromised as long as conflicts are reconciled during the checkout process.
 
 ## Chain Replication
 
