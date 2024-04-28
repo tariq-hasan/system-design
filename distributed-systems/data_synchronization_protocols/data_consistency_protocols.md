@@ -49,7 +49,7 @@ Usually, the stronger the consistency model a system satisfies, the easier it is
 This is because the developer can rely on stricter guarantees.
 
 ![Consistency Models](images/consistency_models.png)
-Spectrum of consistency models - consistency guarantees get stronger as we move to the right
+*Caption: Spectrum of consistency models - consistency guarantees get stronger as we move to the right*
 
 # Strict Consistency
 
