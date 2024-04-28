@@ -1,15 +1,12 @@
-# Interview
+# [WIP] Performance Metrics
 
-## Performance Metrics
+# [WIP] Memory
 
-## Memory
+# [WIP] Capacity Planning and Estimation
 
-## Capacity Planning and Estimation
+# [WIP] Miscellaneous
 
-## Miscellaneous
+# [WIP] Methodology
 
-## Methodology
-
-## Common Mistakes
-
+# [WIP] Common Mistakes
 

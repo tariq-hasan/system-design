@@ -1,46 +1,44 @@
-# Basic System Design
+# [WIP] Domain Name System
 
-## Domain Name System
+# [WIP] Proxy
 
-## Proxy
+# [WIP] Load Balancer
 
-## Load Balancer
+# [WIP] Database
 
-## Database
+# [WIP] Key-Value Store
 
-## Key-Value Store
+# [WIP] Content Delivery Network
 
-## Content Delivery Network
+# [WIP] Sequencer
 
-## Sequencer
+# [WIP] Distributed Monitoring
 
-## Distributed Monitoring
+# [WIP] Monitoring Server-side Errors
 
-## Monitoring Server-side Errors
+# [WIP] Distributed Client-side Errors
 
-## Distributed Client-side Errors
+# [WIP] Distributed Cache
 
-## Distributed Cache
+# [WIP] Distributed Messaging Queue
 
-## Distributed Messaging Queue
+# [WIP] Pub-sub
 
-## Pub-sub
+# [WIP] Rate Limiter
 
-## Rate Limiter
+# [WIP] Blob Store
 
-## Blob Store
+# [WIP] Distributed Search
 
-## Distributed Search
-
-## Distributed Logging
+# [WIP] Distributed Logging
 
 [Distributed Logging](basic/distributed_logging.md)
 
 ![Distributed Logging Architecture](basic/images/distributed_logging_architecture_basic.png)
 
-## Distributed Task Scheduler
+# [WIP] Distributed Task Scheduler
 
-## Sharded Counters
+# [WIP] Sharded Counters
 
-## Top K Problem
+# [WIP] Top K Problem
 
