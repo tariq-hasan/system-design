@@ -16,7 +16,7 @@ This repository contains a collection of markdown files covering various topics 
 
 ## Data Synchronization Protocols
 
-- [Data Synchronization Protocols](data_synchronization_protocols.md): Protocols for ensuring data consistency, availability, fault tolerance, and reliability in distributed systems.
+- [Data Synchronization Protocols](data_synchronization_protocols): Protocols for ensuring data consistency, availability, fault tolerance, and reliability in distributed systems.
 
 ## Distributed Transactions
 
