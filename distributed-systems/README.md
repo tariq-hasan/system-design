@@ -4,10 +4,10 @@ This repository contains a collection of markdown files covering various topics 
 
 ## Basics
 
-- [Fallacies of Distributed Systems](fallacies_of_distributed_systems.md): Common misconceptions about distributed systems and their implications.
-- [Difficulties Designing Distributed Systems](difficulties_designing_distributed_systems.md): Challenges and complexities involved in designing distributed systems.
-- [Safety Guarantees in Distributed Systems](safety_guarantees_in_distributed_systems.md): Importance of safety guarantees and techniques for achieving them in distributed systems.
-- [Measures of Correctness in Distributed Systems](measures_of_correctness_in_distributed_systems.md): Measures of correctness and how they apply to distributed systems.
+- [Fallacies](fallacies.md): Common misconceptions about distributed systems and their implications.
+- [Design Difficulties](design_difficulties.md): Challenges and complexities involved in designing distributed systems.
+- [Safety Guarantees](safety_guarantees.md): Importance of safety guarantees and techniques for achieving them in distributed systems.
+- [Measures of Correctness](measures_of_correctness.md): Measures of correctness and how they apply to distributed systems.
 - [System Models](system_models.md): Models and frameworks for understanding and analyzing distributed systems.
 - [Spectrum of Failure Models](spectrum_of_failure_models.md): Failure models and their impact on distributed systems.
 - [Message Delivery](message_delivery.md): Challenges and mechanisms for ensuring reliable message delivery in distributed systems.
