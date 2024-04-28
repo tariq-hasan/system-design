@@ -60,152 +60,83 @@
 
 ### Primary-Backup Replication / Single-Master Replication
 
-- Goal: In single-master replication, also known as master-slave replication, one designated replica serves as the master or primary node, while the other replicas act as slaves or secondary nodes.
-- Process: The master replica is responsible for processing all write operations (updates, inserts, deletes) from clients and propagating these changes to the slave replicas. The slave replicas asynchronously replicate the changes from the master and serve read requests from clients.
-- Benefits:
-  - Data Consistency: With a single authoritative source for writes (the master), data consistency is easier to maintain since all writes are applied in a sequential manner.
-  - Simplicity: Single-master replication setups are often simpler to design, implement, and manage compared to multi-master configurations due to the clear distinction between master and slave nodes.
-  - Failover: In the event of master failure, one of the slave replicas can be promoted to the master role, ensuring continuous operation with minimal disruption.
-- Challenges:
-  - Scalability: Write operations are bottlenecked by the master node since all writes must go through it, potentially limiting scalability as the workload increases.
-  - Read Scalability: While reads can be distributed across slave replicas, they may lag behind the master in terms of data freshness due to asynchronous replication.
-  - Single Point of Failure: The master node represents a single point of failure, and its failure can impact the entire system until failover occurs.
-- Techniques for propagating updates
-  - Synchronous replication
-    - the node replies to the client to indicate that the update is complete - only after receiving acknowledgments from the other replicas that they have also
-    performed the update on their local storage
-    - guarantees that the client is able to view the update in a subsequent read after acknowledging it, no matter which replica the client reads from
-    - provides increased durability because the update is not lost even if the leader crashes right after it acknowledges the update
-    - makes writing requests slower because the leader has to wait until it receives responses from all the replicas
-    - Steps
-      - a distributed system with a leader-follower architecture, where the primary node is the leader while secondary nodes are followers
-      - client sends a write request to primary node
-      - primary nodes performs write request locally
-      - primary node propagates the write request to the secondary nodes
-      - secondary I performs write request and sends acknowledgement to the primary node
-      - secondary II performs write request and sends acknowledgment to the primary node
-      - synchronous replication: primary/leader node sends an acknowledgement to the client after writing updates to all nodes (leader and followers)
-  - Asynchronous replication
-    - the node replies to the client as soon as it performs the update in its local storage, without waiting for responses from the other replicas
-    - increases performance for write requests because the client no longer pays the penalty of the network requests to the other replicas
-    - reduces consistency - after a client receives a response for an update request the client might read older/stale values in a subsequent read; this is only possible if the operation happens in one of the replicas that have not yet performed the update
-    - reduces durability - if the leader node crashes right after it acknowledges an update, and the propagation requests to the other replicas are lost, any acknowledged update is eventually lost
-    - Steps
-      - a distributed system with leader-follower architecture, where the primary node is the leader while secondary nodes are followers
-      - client sends a write request to primary node
-      - primary node performs write request locally
-      - asynchronous replication: primary/leader node sends acknowledgement to the client right after performing update in its local storage without waiting to send and perform updates to other replica nodes (secondary/followers)
-      - primary node propagates the write request to the secondary nodes
-      - secondary I performs write request and sends acknowledgement to the primary node
-      - secondary II performs write request and sends acknowledgement to the primary node
-- Examples
-  - Most widely used databases, such as PostgreSQL or MySQL, use a single-master replication technique that supports both asynchronous and synchronous replication.
-- Advantages of single-master replication
-  - simple to understand and implement
-  - concurrent operations serialized in the leader node, remove the need for more complicated, distributed concurrency protocols; makes it easier to support transactional operations
-  - scalable for read-heavy workloads because the capacity for reading requests can be increased by adding more read replicas
-- Disadvantages of single-master replication
-  - not very scalable for write-heavy workloads because a single node (the leader)’s capacity determines the capacity for writes
-  - imposes an obvious trade-off between performance, durability, and consistency - scaling the read capacity by adding more follower nodes can create a bottleneck in the network bandwidth of the leader node, if there’s a large number of followers listening for updates
-  - the process of failing over to a follower node when the leader node crashes is not instant; this may create some downtime and also introduce the risk of errors
+- Overview
+  - Goal: In single-master replication, one designated replica serves as the master or primary node, while others act as slaves or secondary nodes.
+  - Process: Master handles writes, slaves replicate changes, and serve read requests.
+  - Examples: Widely used in databases like PostgreSQL and MySQL.
+- Benefits
+  - Data Consistency: Sequential writes maintain consistency.
+  - Simplicity: Clear master-slave setup.
+  - Failover: Slave can take over if master fails.
+- Challenges
+  - Scalability: Write bottleneck at master.
+  - Read Scalability: Slaves may lag in data freshness.
+  - Single Point of Failure: Master failure impacts system.
+- Techniques for Propagating Updates
+  - Synchronous Replication
+    - Ensures update acknowledgment from all replicas.
+    - Increased durability and consistency.
+    - Slower writes due to wait for acknowledgments.
+  - Asynchronous Replication
+    - Immediate response to client, then updates replicas.
+    - Performance boost for writes.
+    - Reduced consistency and durability risks.
+- Advantages
+  - Simple Implementation: Easy to understand.
+  - Concurrent Operations: Serialized in master, supports transactions.
+  - Read Scalability: Read-heavy workloads scalable with more replicas.
+- Disadvantages
+  - Write Scalability: Limited by master's capacity.
+  - Performance-Durability-Consistency Trade-off: Adding followers can bottleneck.
+  - Failover Process: Not instant, downtime risk.
 
 #### Failover
 
-- Failover is when the master node crashes and a random follower node takes over.
-- This process may involve downtime and potential data loss.
+- Failover occurs when the master node fails, and a follower node takes over its role.
+- This process aims to maintain system operation despite node failures but may involve downtime and potential data loss.
 - Manual approach
-  - The operator selects the new leader node and instructs all the nodes accordingly.
-  - This is the safest approach, but it incurs significant downtime.
+  - The operator selects the new leader node and instructs all nodes accordingly.
+  - This approach is safer but results in significant downtime.
 - Automated approach
-  - Follower nodes detect that the leader node has crashed (e.g. via periodic heartbeats (periodic messages sent by a node that indicate that it is working failure-free)) and attempt to elect a new leader node.
-  - This is faster but is quite risky because there are many different ways in which the nodes can get confused and arrive at an incorrect state.
+  - Follower nodes detect the leader node's failure, often through periodic heartbeats (periodic messages indicating normal operation).
+  - Follower nodes then attempt to elect a new leader node automatically.
+  - This approach is faster but carries a higher risk of incorrect state due to potential confusion among nodes.
 
-### Multi-Primary Replication
+### Multi-Master Replication
 
 - Goal: Multi-master replication, also known as symmetric or peer-to-peer replication, allows multiple replicas to function as independent masters, each capable of processing both read and write operations.
 - Process: In a multi-master setup, all replicas are considered equal peers, and each can accept write operations from clients. Changes made to any master are propagated asynchronously to other masters, ensuring data consistency across the system.
 - Benefits:
-  - Scalability: Multi-master replication distributes write operations across multiple nodes, enabling better scalability and higher throughput compared to single-master setups.
-  - High Availability: Since multiple masters are available to process writes, the system can continue to operate even if one or more masters fail.
-  - Low Latency: With multiple masters serving write operations, clients can write to the nearest available master, reducing latency.
+  - Scalability: Distributes write operations across multiple nodes, enabling better scalability and higher throughput compared to single-master setups.
+  - High Availability: Multiple masters are available to process writes, allowing the system to continue operating even if one or more masters fail.
+  - Low Latency: Clients can write to the nearest available master, reducing latency with multiple masters serving write operations.
 - Challenges:
-  - Conflict Resolution: Conflicts may arise when concurrent writes occur on different masters, requiring robust conflict resolution mechanisms to maintain data consistency.
-  - Complexity: Multi-master replication setups are often more complex to design, implement, and manage compared to single-master configurations due to the need for conflict resolution and coordination among masters.
+  - Conflict Resolution: Conflicts may arise when concurrent writes occur on different masters, requiring robust conflict resolution mechanisms.
+  - Complexity: More complex to design, implement, and manage compared to single-master configurations due to conflict resolution and coordination among masters.
   - Data Consistency: Ensuring data consistency across multiple masters can be challenging, especially in scenarios with high update rates or network partitions.
+  - Network Partition Handling:
+    - Need to handle network partitions gracefully to ensure availability and consistency.
+    - Techniques such as quorum-based replication or automatic failover mechanisms can maintain system operation in the presence of network partitions.
 
+## Single-Master Replication vs Multi-Master Replication
 
+- Single-Master Replication
+  - Advantages:
+    - Easy to implement and operate.
+    - Can support transactions and hide the distributed nature of the system, especially with synchronous replication.
+  - Limitations:
+    - Performance, scalability, and availability may be constrained.
 
-- Independent Write Operations
-    - Each leader can independently accept write operations from clients or applications without coordination with other leaders.
-    - This allows for horizontal scalability and improved write throughput since write requests can be distributed across multiple nodes.
-- Conflict Resolution
-    - Since multiple leaders can accept write operations concurrently, conflicts may arise when two or more leaders modify the same data item concurrently.
-    - Conflict resolution mechanisms are needed to resolve conflicts and ensure data consistency across the system.
-    - Common conflict resolution strategies include last-write-wins, timestamp-based conflict resolution, or application-specific conflict resolution logic.
-- Asynchronous Replication
-    - Changes made by one leader need to be replicated to other leaders in the system to ensure consistency.
-    - This replication process is typically asynchronous, meaning that changes are propagated to other nodes after they have been applied locally.
-    - Asynchronous replication introduces the possibility of eventual consistency, where updates may not be immediately visible on all nodes.
-- Network Partition Handling
-    - Multi-leader replication systems need to handle network partitions gracefully to ensure availability and consistency.
-    - Techniques such as quorum-based replication or automatic failover mechanisms can be employed to maintain system operation in the presence of network partitions.
-
-Overall, multi-leader replication provides flexibility, scalability, and fault tolerance in distributed database systems by allowing multiple nodes to accept write operations independently. However, it also introduces challenges related to conflict resolution, consistency, and network partition handling that need to be addressed to ensure the correctness and reliability of the system.
-
-- Single-master replication
-  - easy to implement and operate
-  - can easily support transactions and hide the distributed nature of the underlying system, i.e. when using synchronous replication
-  - has some limitations in terms of performance, scalability, and availability
-
-- There are many applications where availability and performance are much more important than data consistency or transactional semantics.
-- example of e-commerce shopping cart
-  - most important thing is for customers to be able to access their cart at all times and add items quickly and easily
-  - acceptable to compromise consistency to achieve this, as long as there is data reconciliation at some point e.g. if two replicas diverge because of intermittent failures, the customer can still resolve conflicts during the checkout process
-
-- Multi-master/Multi-primary replication
-  - favors higher availability and performance over data consistency
-  - case where all replicas are equal, can accept write requests and are responsible for propagating the data modifications to the rest of the group
-  - no single master node that serializes the requests and imposes a single order, as write requests are concurrently handled by all the nodes => nodes might disagree on what is the right order for some requests (called a conflict)
-  - for the system to remain operational the nodes need to resolve this conflict when it occurs by agreeing on a single order from the available ones
-
-- instance where two write requests can potentially result in a conflict, depending on the latency of the propagation requests between the nodes of the system
-  - a client and three replicated nodes A, B, and C
-  - client sends a write request to Node A
-  - node A receives the write request
-  - node A writes the value of X locally
-  - node A propagates the value of X to nodes B and C
-  - node C receives the value of X; however, before node B receives this, client sends another write request to node B
-  - node C writes the value of X locally; node B receives the later write request (X = 14) before the earlier write request (X = 10)
-  - node B writes the value of X it received locally
-  - node B propagates the value of X to nodes A and C
-  - nodes A and C receive the updated values for X
-  - nodes A and C update the value of X locally
-  - node B finally receives the first write request (X = 10)
-  - node B updates the value of X; at this time, after executing both write requests by client, the value of X at node B is 10 while the other nodes A and C contain value of X equal to 14
-  - now, if client reads X what will it get?; either 10 or 14 depending on which node serves the read request
-
-- In the case of a conflict, a subsequent read request could receive different results depending on the node that handles the request - unless we resolve the conflict so that all the nodes converge again to a single value.
-
-Conflict resolution approaches
-- differ depending on
-  - the guarantees the system wants to provide
-  - whether the approach is eager or lazy
-    - eager: conflict resolved during the write operation
-    - lazy: the write operation proceeds to maintain multiple, alternative versions of the data record that are eventually resolved to a single version later on i.e. during a subsequent read operation
-- 01: exposing conflict resolution to the clients
-  - when there is a conflict the multiple available versions return to the client
-  - the client then selects the right version and returns it to the system
-  - this resolves the conflict
-  - example: shopping cart application where the customer selects the correct version of their cart
-- 02: last-write-wins conflict resolution
-  - each node in the system tags each version with a timestamp, using a local clock
-  - during a conflict, the version with the latest timestamp is selected
-  - can lead to some unexpected behaviors, as there is no global notion of time
-  - e.g. write A can override write B, even though B happened “as a result” of A
-- 03: causality tracking algorithms
-  - the system uses an algorithm that keeps track of causal relationships between different requests
-  - when there is a conflict between two writes (A, B) and one is determined to be the cause of the other one (suppose A is the cause of B), then the resulting write (B) is retained
-  - there can still be writes that are not causally related i.e. requests are actually concurrent; in such cases the system cannot make an easy decision
+- Multi-Master Replication
+  - Characteristics:
+    - Favors higher availability and performance over strict data consistency.
+    - All replicas are equal and can accept write requests, responsible for propagating data modifications to the rest of the group.
+    - No single master node serializes requests; write requests are concurrently handled by all nodes.
+    - Nodes might disagree on the order of some requests, leading to conflicts.
+    - Nodes need to resolve conflicts to maintain system operation.
+  - Example:
+    - Applications prioritize availability and performance over data consistency or transactional semantics.
+    - E-commerce shopping cart: Customers need continuous access to their cart, and performance is crucial. Consistency can be compromised as long as conflicts are reconciled during the checkout process.
 
 ## Chain Replication
 
