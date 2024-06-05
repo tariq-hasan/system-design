@@ -49,11 +49,25 @@ Conflict resolution approaches
   - when there is a conflict between two writes (A, B) and one is determined to be the cause of the other one (suppose A is the cause of B), then the resulting write (B) is retained
   - there can still be writes that are not causally related i.e. requests are actually concurrent; in such cases the system cannot make an easy decision
 
+Purpose: Resolve conflicts that arise when multiple nodes concurrently update the same data.
+
 ## Last-Writer-Wins (LWW) Conflict Resolution
+    * How It Works: The system keeps the most recent write, typically based on a timestamp.
+    * Use Case: Simple distributed systems where recent updates are prioritized.
+    * Pros: Easy to implement.
+    * Cons: Risk of losing important data from earlier writes.
 
 ## Vector Clocks (timestamp-based conflict resolution)
+    * How It Works: Each write operation is tagged with a timestamp, and the system uses these timestamps to resolve conflicts.
+    * Use Case: Systems where precise ordering of updates is critical.
+    * Pros: Clear and logical resolution method.
+    * Cons: Requires synchronized clocks across nodes.
 
 ## Conflict-Free Replicated Data Types (CRDTs)
+    * How It Works: Data structures designed to merge without conflicts, ensuring eventual consistency.
+    * Use Case: Real-time collaborative applications like Google Docs.
+    * Pros: Automatic conflict resolution.
+    * Cons: Limited to specific data types and operations.
 
 - CRDTs are data structures designed to support concurrent updates across replicas without the need for synchronization or coordination.
 - CRDTs ensure that updates commute and can be merged deterministically, allowing replicas to converge to a consistent state without conflicts.

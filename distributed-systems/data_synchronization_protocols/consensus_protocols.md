@@ -51,15 +51,47 @@ Consensus protocols can be considered a form of both replication and data synchr
 - Data Synchronization: Consensus protocols are also used to synchronize the state of distributed systems by agreeing on a common order of operations or events. In this context, consensus ensures that all nodes in the system apply operations in the same order, leading to consistent state across the distributed system. This synchronization is crucial for maintaining consistency and correctness in distributed systems where multiple nodes may concurrently process requests or updates.
 In summary, consensus protocols serve dual purposes: they facilitate replication by ensuring that replicas maintain consistency, and they enable data synchronization by agreeing on a common order of operations or events. Depending on the specific application and requirements of the distributed system, consensus protocols may be utilized primarily for replication, data synchronization, or both.
 
+Purpose: Ensure that a group of nodes agrees on a single value or outcome, even in the presence of failures or partitions.
+
 ## Paxos
 
+    * How It Works: Proposers propose values to acceptors; a value is chosen when a majority of acceptors agree.
+    * Use Case: Fault-tolerant distributed systems requiring strong consistency.
+    * Pros: High fault tolerance.
+    * Cons: Complex to implement and understand.
+
 - https://martinfowler.com/articles/patterns-of-distributed-systems/paxos.html
+
+* Use Case: Fault-tolerant distributed systems, consensus algorithms.
+* How It Works:
+    * Proposer: Proposes a value to the acceptors.
+    * Acceptors: Accept the proposed value if it’s the highest received.
+    * Learners: Learn the chosen value after consensus is reached.
+* Pros: Highly fault-tolerant.
+* Cons: Complex and can be slow due to multiple rounds of communication.
 
 ## Chandra-Toueg
 
 ## Raft
 
-## Zab
+    * How It Works: Elects a leader to manage log replication and agreement among nodes.
+    * Use Case: Simplified consensus for distributed logs.
+    * Pros: Easier to understand and implement compared to Paxos.
+    * Cons: Leader-based, which can be a single point of failure.
+
+* Use Case: Distributed systems requiring consensus, like replicated logs.
+* How It Works:
+    * Leader Election: A leader is elected among the nodes.
+    * Log Replication: The leader manages the log entries and replicates them to follower nodes.
+    * Commitment: Once a majority of nodes have the same log entry, it’s committed.
+* Pros: Easier to understand and implement compared to Paxos.
+* Cons: Leader-based, which can be a single point of failure.
+
+## Zab (ZooKeeper Atomic Broadcast)
+    * How It Works: Similar to Paxos but optimized for ZooKeeper, ensuring atomic broadcast of updates.
+    * Use Case: Coordination services in distributed systems.
+    * Pros: High performance and reliability in specific use cases.
+    * Cons: Tightly coupled with ZooKeeper's architecture.
 
 ## Practical Byzantine Fault Tolerance (PBFT)
 

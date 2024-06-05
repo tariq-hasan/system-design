@@ -254,3 +254,25 @@ A schedule is serializable if it's equivalent to some serial execution of transa
 Serializability ensures that the execution of transactions doesn't violate the consistency constraints of the database.
 
 Serializability is about ensuring that the execution of transactions in a database maintains consistency. They both aim to ensure consistency but at different levels and in different contexts.
+
+
+
+
+
+
+Purpose: Enforce consistency guarantees across distributed data stores to maintain data integrity.
+* Linearizability:
+    * How It Works: Operations appear instantaneous and consistent across all nodes.
+    * Use Case: Systems requiring strict consistency.
+    * Pros: Provides a strong consistency model.
+    * Cons: High latency and performance overhead.
+* Serializability:
+    * How It Works: Ensures that the results of executing transactions concurrently are equivalent to some serial execution.
+    * Use Case: Transactional databases.
+    * Pros: Ensures correctness in concurrent transactions.
+    * Cons: Complex to implement and can affect performance.
+* Eventual Consistency:
+    * How It Works: Updates are propagated to all nodes asynchronously, eventually leading to consistency.
+    * Use Case: Distributed systems where availability is more critical than immediate consistency.
+    * Pros: High availability and partition tolerance.
+    * Cons: Temporary inconsistencies are possible.
