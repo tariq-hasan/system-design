@@ -1,33 +1,48 @@
-# Replication Protocols
+# Table of Contents
+
+1. [Motivation](#motivation)
+2. [Pessimistic vs Optimistic](#pessimistic-vs-optimistic)
+   - [Pessimistic Replication](#pessimistic-replication)
+   - [Optimistic Replication / Lazy Replication](#optimistic-replication--lazy-replication)
+3. [Active vs Passive](#active-vs-passive)
+   - [Active-Active Replication / Active Replication](#active-active-replication--active-replication)
+   - [Active-Passive Replication / Passive Replication](#active-passive-replication--passive-replication)
+4. [Masters vs Workers](#masters-vs-workers)
+   - [Primary-Backup Replication / Single-Master Replication](#primary-backup-replication--single-master-replication)
+   - [Multi-Master Replication](#multi-master-replication)
+5. [Chain Replication](#chain-replication)
+6. [Single-Master Replication vs Multi-Master Replication vs Chain Topology](#single-master-replication-vs-multi-master-replication-vs-chain-topology)
+
+# Motivation
 
 - Used to achieve scalability, consistency, availability, fault tolerance, reliability, load balancing and data locality.
 - Ensures that data remains accessible even in the presence of node failures, network partitions, or other types of system disruptions.
 - The choice of replication protocol depends on the specific requirements of the system, including consistency guarantees, availability constraints, and performance considerations.
 
-## Pessimistic vs Optimistic
+# Pessimistic vs Optimistic
 
 - Pessimistic replication prioritizes strong consistency by ensuring immediate synchronization across all replicas, while optimistic replication prioritizes low latency and high throughput by allowing temporary divergence with eventual convergence.
 
-### Pessimistic Replication
+## Pessimistic Replication
 
 - Goal: Pessimistic replication aims to ensure that all replicas of the data are identical from the outset, as if there was only one copy of the data throughout the system.
 - Process: When an update or modification to the data occurs, it is propagated to all replicas immediately and synchronously. This means that before acknowledging a write operation as successful, the system ensures that the update has been applied to all replicas and that they are consistent.
 - Guarantee: This approach provides strong consistency guarantees, as all replicas are guaranteed to be identical at any point in time.
 - Trade-offs: Pessimistic replication tends to be more resource-intensive and may introduce higher latency due to the need for synchronous updates across replicas. However, it ensures that the system maintains strong consistency, which is crucial for applications where data integrity is paramount.
 
-### Optimistic Replication / Lazy Replication
+## Optimistic Replication / Lazy Replication
 
 - Goal: Optimistic replication, also known as lazy replication, allows replicas to diverge temporarily, with the expectation that they will converge again later.
 - Process: When an update occurs, it is applied to a single replica, and then propagated asynchronously to other replicas in the background. Rather than waiting for confirmation from all replicas before acknowledging a write operation, the system acknowledges the write immediately to the client.
 - Guarantee: While replicas may diverge temporarily, lazy replication guarantees eventual consistency. If the system does not receive any updates for a period of time or enters a quiescent state, replicas have the opportunity to converge again by reconciling their differences.
 - Trade-offs: Lazy replication reduces latency and improves throughput by allowing the system to acknowledge writes quickly, without waiting for synchronization across all replicas. However, it may introduce temporary inconsistencies between replicas, which applications must handle gracefully.
 
-## Active vs Passive
+# Active vs Passive
 
 - Active-active replication distributes workload across multiple replicas for improved performance and fault tolerance but requires careful management of conflicts and consistency.
 - Active-passive replication simplifies management and ensures data consistency but may underutilize resources and introduce latency during failover events.
 
-### Active-Active Replication / Active Replication
+## Active-Active Replication / Active Replication
 
 - Goal: Active-active replication, also known as symmetric or bi-directional replication, involves multiple replicas being actively involved in processing requests simultaneously.
 - Process: In an active-active setup, all replicas are capable of serving read and write requests concurrently. Each replica independently processes incoming requests and updates its local state accordingly.
@@ -40,7 +55,7 @@
   - Data Consistency: Ensuring consistency across all replicas can be challenging, especially in scenarios with high update rates or network partitions.
   - Complexity: Implementing and managing an active-active replication setup can be more complex compared to active-passive configurations.
 
-### Active-Passive Replication / Passive Replication
+## Active-Passive Replication / Passive Replication
 
 - Goal: Active-passive replication involves designating one replica as the primary or active node, while the others remain passive or standby.
 - Process: In an active-passive setup, the primary replica processes all incoming requests, while the passive replicas remain idle, only receiving updates from the primary replica.
@@ -53,12 +68,12 @@
   - Potential for Increased Latency: Failover to a passive replica may introduce additional latency, especially if the replica needs to be initialized or updated before becoming active.
   - Scalability Limits: Scaling read operations may be limited by the capacity of the primary replica since passive replicas do not serve requests directly.
 
-## Masters vs Workers
+# Masters vs Workers
 
 - Single-master replication simplifies data consistency by designating one master for write operations but may face scalability and availability limitations.
 - Multi-master replication offers better scalability, availability, and lower latency by distributing write operations across multiple masters but requires robust conflict resolution mechanisms and introduces complexity in system design and management.
 
-### Primary-Backup Replication / Single-Master Replication
+## Primary-Backup Replication / Single-Master Replication
 
 - Overview
   - Goal: In single-master replication, one designated replica serves as the master or primary node, while others act as slaves or secondary nodes.
@@ -90,19 +105,20 @@
   - Performance-Durability-Consistency Trade-off: Adding followers can bottleneck.
   - Failover Process: Not instant, downtime risk.
 
-#### Failover
+<br/>
 
-- Failover occurs when the master node fails, and a follower node takes over its role.
-- This process aims to maintain system operation despite node failures but may involve downtime and potential data loss.
-- Manual approach
-  - The operator selects the new leader node and instructs all nodes accordingly.
-  - This approach is safer but results in significant downtime.
-- Automated approach
-  - Follower nodes detect the leader node's failure, often through periodic heartbeats (periodic messages indicating normal operation).
-  - Follower nodes then attempt to elect a new leader node automatically.
-  - This approach is faster but carries a higher risk of incorrect state due to potential confusion among nodes.
+- Failover
+  - Failover occurs when the master node fails, and a follower node takes over its role.
+  - This process aims to maintain system operation despite node failures but may involve downtime and potential data loss.
+  - Manual approach
+    - The operator selects the new leader node and instructs all nodes accordingly.
+    - This approach is safer but results in significant downtime.
+  - Automated approach
+    - Follower nodes detect the leader node's failure, often through periodic heartbeats (periodic messages indicating normal operation).
+    - Follower nodes then attempt to elect a new leader node automatically.
+    - This approach is faster but carries a higher risk of incorrect state due to potential confusion among nodes.
 
-### Multi-Master Replication
+## Multi-Master Replication
 
 - Goal: Multi-master replication, also known as symmetric or peer-to-peer replication, allows multiple replicas to function as independent masters, each capable of processing both read and write operations.
 - Process: In a multi-master setup, all replicas are considered equal peers, and each can accept write operations from clients. Changes made to any master are propagated asynchronously to other masters, ensuring data consistency across the system.
@@ -127,7 +143,7 @@
     - Need to handle network partitions gracefully to ensure availability and consistency.
     - Techniques such as quorum-based replication or automatic failover mechanisms can maintain system operation in the presence of network partitions.
 
-## Chain Replication
+# Chain Replication
 
 - Chain replication is a distributed replication protocol designed to provide fault tolerance and consistency in distributed systems.
 - In chain replication, nodes are organized in a linear chain topology, where each node acts as a replica responsible for storing a copy of the data.
@@ -150,7 +166,7 @@
   - Scalability: Adding new nodes to the chain may be challenging, as it requires coordination and synchronization among existing nodes.
 - Overall, chain replication is a useful replication protocol for systems that require strong consistency and fault tolerance, particularly in scenarios where a linear ordering of operations is essential.
 
-## Single-Master Replication vs Multi-Master Replication vs Chain Topology
+# Single-Master Replication vs Multi-Master Replication vs Chain Topology
 
 - Topology:
   - Single-Master Replication: Has a centralized master node with replica nodes.
