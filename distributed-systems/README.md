@@ -16,12 +16,18 @@ This repository contains a collection of markdown files covering various topics 
 
 ## Data Synchronization Protocols
 
-- [Data Synchronization Protocols](data_synchronization_protocols): Protocols for ensuring data consistency, availability, fault tolerance, and reliability in distributed systems.
+- [Data Synchronization Protocols](data_synchronization_protocols/0_data_synchronization_protocols.md)
+- [WIP] [Conflict Resolution Protocols](data_synchronization_protocols/1_conflict_resolution_protocols.md)
+- [WIP] [Consensus Protocols](data_synchronization_protocols/2_consensus_protocols.md)
+- [WIP] [Data Consistency Protocols](data_synchronization_protocols/3_data_consistency_protocols.md)
+- [WIP] [Quorum-based Protocols](data_synchronization_protocols/4_quorum-based_protocols.md)
+- [Replication Protocols](data_synchronization_protocols/5_replication_protocols.md)
+- [Versioning Protocols](data_synchronization_protocols/6_versioning_protocols.md)
 
 ## Distributed Transactions
 
-- [WIP] [Transactional Models](transactional_models.md): Transactional models and techniques for ensuring transactional integrity in distributed systems.
-- [WIP] [Distributed Transactions](distributed_transactions.md): Distributed transactional models and protocols for coordinating transactions across distributed systems.
+- [WIP] [Transactional Models](distributed_transactions/transactional_models.md): Transactional models and techniques for ensuring transactional integrity in distributed systems.
+- [WIP] [Distributed Transactions](distributed_transactions/distributed_transactions.md): Distributed transactional models and protocols for coordinating transactions across distributed systems.
 
 ## CAP Theorem
 
