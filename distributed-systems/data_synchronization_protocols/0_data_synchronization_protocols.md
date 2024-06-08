@@ -1,3 +1,14 @@
+# Table of Contents
+
+1. [Split-brain Scenarios](#split-brain-scenarios)
+   - [Definition and Causes](#definition-and-causes)
+   - [Characteristics](#characteristics)
+   - [Examples](#examples)
+   - [Consequences](#consequences)
+   - [Mitigation Strategies](#mitigation-strategies)
+2. [Data Synchronization Protocols](#data-synchronization-protocols)
+   - [Types of Protocols](#types-of-protocols)
+
 # Split-brain Scenarios
 
 ## Definition and Causes
