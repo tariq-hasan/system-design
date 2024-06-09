@@ -1,44 +1,24 @@
-# [WIP] Domain Name System
+# Resources for Basic Sample Problems
 
-# [WIP] Proxy
+This repository contains a collection of markdown files covering various topics related to basic system design.
 
-# [WIP] Load Balancer
-
-# [WIP] Database
-
-# [WIP] Key-Value Store
-
-# [WIP] Content Delivery Network
-
-# [WIP] Sequencer
-
-# [WIP] Distributed Monitoring
-
-# [WIP] Monitoring Server-side Errors
-
-# [WIP] Distributed Client-side Errors
-
-# [WIP] Distributed Cache
-
-# [WIP] Distributed Messaging Queue
-
-# [WIP] Pub-sub
-
-# [WIP] Rate Limiter
-
-# [WIP] Blob Store
-
-# [WIP] Distributed Search
-
-# [WIP] Distributed Logging
-
-[Distributed Logging](basic/distributed_logging.md)
-
-![Distributed Logging Architecture](basic/images/distributed_logging_architecture_basic.png)
-
-# [WIP] Distributed Task Scheduler
-
-# [WIP] Sharded Counters
-
-# [WIP] Top K Problem
-
+- [WIP] [Domain Name System](domain_name_system.md)
+- [WIP] [Proxy](proxy.md)
+- [WIP] [Load Balancer](load_balancer.md)
+- [WIP] [Database](database.md)
+- [WIP] [Key-Value Store](key-value_store.md)
+- [WIP] [Content Delivery Network](content_delivery_network.md)
+- [WIP] [Sequencer](sequencer.md)
+- [WIP] [Distributed Monitoring](distributed_monitoring.md)
+- [WIP] [Monitoring Server-side Errors](monitoring_server-side_errors.md)
+- [WIP] [Distributed Client-side Errors](distributed_client-side_errors.md)
+- [WIP] [Distributed Cache](distributed_cache.md)
+- [WIP] [Distributed Messaging Queue](distributed_messaging_queue.md)
+- [WIP] [Pub-sub](pub-sub.md)
+- [WIP] [Rate Limiter](rate_limiter.md)
+- [WIP] [Blob Store](blob_store.md)
+- [WIP] [Distributed Search](distributed_search.md)
+- [WIP] [Distributed Logging](distributed_logging.md)
+- [WIP] [Distributed Task Scheduler](distributed_task_scheduler.md)
+- [WIP] [Sharded Counters](sharded_counters.md)
+- [WIP] [Top K Problem](top_k_problem.md)

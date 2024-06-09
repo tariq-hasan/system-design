@@ -1,4 +1,4 @@
-# Distributed Systems Resources
+# Resources for Distributed Systems
 
 This repository contains a collection of markdown files covering various topics related to distributed systems.
 
