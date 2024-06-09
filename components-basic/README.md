@@ -1,6 +1,6 @@
-# Resources for Basic Sample Problems
+# Resources for Basic Components
 
-This repository contains a collection of markdown files covering various topics related to basic system design.
+This repository contains a collection of markdown files covering various basic components.
 
 - [WIP] [Domain Name System](domain_name_system.md)
 - [WIP] [Proxy](proxy.md)
