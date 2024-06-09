@@ -22,7 +22,7 @@ This repository contains a collection of markdown files covering various topics 
 - [WIP] [Data Consistency Protocols](data_synchronization_protocols/3_data_consistency_protocols.md)
 - [WIP] [Quorum-based Protocols](data_synchronization_protocols/4_quorum-based_protocols.md)
 - [Replication Protocols](data_synchronization_protocols/5_replication_protocols.md)
-- [Versioning Protocols](data_synchronization_protocols/6_versioning_protocols.md)
+- [WIP] [Versioning Protocols](data_synchronization_protocols/6_versioning_protocols.md)
 
 ## Distributed Transactions
 
