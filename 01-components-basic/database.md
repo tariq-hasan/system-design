@@ -1,5 +1,31 @@
 # Database
 
+## Database Properties (ACID)
+
+### Atomicity
+- Transactions either completely succeed or completely fail
+- Complex operations with multiple transformations execute as a single unit
+- If any component of a write operation fails, the entire transaction is rolled back
+- Prevents partial writes or incomplete data transformations
+- Ensures data integrity by avoiding "half-baked" data states
+
+### Consistency
+- Database enforces defined rules and constraints
+- Invalid operations (e.g., writing negative values when not allowed) cause transaction rollback
+- Ensures data always transitions from one valid state to another
+
+### Isolation
+- Concurrent transactions are isolated from each other
+- Prevents interference between transactions operating on the same data
+- One transaction cannot see another transaction's incomplete changes
+- Avoids race conditions and unpredictable states
+
+### Durability
+- Committed transactions persist even during system failures
+- Data is written to durable storage (e.g., disk)
+- Ensures data survives power outages or system crashes
+- Critical for systems handling financial transactions or other important data
+
 ## Database Scaling Approaches
 
 Databases can scale in two primary ways:
