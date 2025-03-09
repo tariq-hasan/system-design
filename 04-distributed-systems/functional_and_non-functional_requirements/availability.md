@@ -1,6 +1,4 @@
-# Functional and Non-functional Requirements
-
-## Understanding Availability and Redundancy
+# Availability and Redundancy
 
 Effective failover strategies rely on a foundation of infrastructure distribution. Modern cloud platforms organize their resources across:
 
