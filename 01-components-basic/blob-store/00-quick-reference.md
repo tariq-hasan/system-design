@@ -56,3 +56,33 @@
   - [17.3 Pre-signed URL Generation](#173-pre-signed-url-generation)
   - [17.4 Data Placement and Replication](#174-data-placement-and-replication)
 - [18. Specific Implementations](#18-specific-implementations)
+
+## 1. Overview
+
+A **Blob Store** (Binary Large Object Store) is a distributed storage service optimized for storing and retrieving large, unstructured data objects such as:
+- Images, videos, audio files
+- Documents, PDFs, office files
+- Application backups and snapshots
+- Log files and application metrics
+- Data lake contents
+- Machine learning models and datasets
+
+**Key Characteristics:**
+- Massive scalability (exabytes+)
+- High durability (99.999999999%)
+- Simple REST APIs (GET/PUT/DELETE)
+- Metadata-rich object storage
+- Content-agnostic data handling
+
+**Popular Examples:** 
+- Amazon S3 (Simple Storage Service)
+- Google Cloud Storage
+- Azure Blob Storage
+- MinIO (open-source)
+- Cloudflare R2
+- Backblaze B2
+
+**Distinctions from Other Storage:**
+- vs. File Systems: No true hierarchy, immutable objects, HTTP access
+- vs. Block Storage: Higher-level abstraction, rich metadata, not mountable
+- vs. Databases: No query language, 10-100x cheaper for large data, no transactions
