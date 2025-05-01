@@ -86,3 +86,47 @@ A **Blob Store** (Binary Large Object Store) is a distributed storage service op
 - vs. File Systems: No true hierarchy, immutable objects, HTTP access
 - vs. Block Storage: Higher-level abstraction, rich metadata, not mountable
 - vs. Databases: No query language, 10-100x cheaper for large data, no transactions
+
+## 2. Use Cases
+
+- **Media Content Delivery**: Store and serve content (videos, images), integrate with CDNs, support byte-range requests for streaming
+  
+- **Data Backup & Archiving**: Long-term retention with versioning, 80-90% cost reduction vs. block storage, object locking for compliance
+
+- **Log & Metrics Storage**: Scale for unpredictable volume (1+ TB daily), time-based partitioning, compression formats (Parquet/ORC)
+
+- **Data Lakes**: Separate storage from compute, schema-on-read flexibility, integration with analytics tools (Spark, Presto)
+
+- **Static Website Hosting**: Serverless delivery with 99.99% availability, CDN integration, automatic scaling, built-in SSL/TLS
+
+- **Mobile/IoT App Data**: Handle intermittent connectivity, support multipart uploads, client-side buffering, edge preprocessing
+
+- **AI/ML Model Storage**: Version models (1-10GB each) and datasets, centralized management, metadata for lineage tracking
+
+- **Collaborative Workflows**: Share large assets (terabytes) between teams, versioning, fine-grained access controls
+
+## 3. Functional Requirements
+
+- **Object Operations**:
+  - Upload objects (PUT): checksumming, content validation, ETag generation, encryption
+  - Download objects (GET): conditional requests, byte-range support, streaming optimization
+  - Delete objects (DELETE): atomic operations, soft-delete options, bulk operations
+  - List objects (LIST): pagination, prefix filtering, delimiter-based hierarchy
+
+- **Metadata Management**:
+  - Custom metadata: key-value pairs (2-4KB limit), system metadata, searchable attributes
+  - Object tagging: tag-based access policies, cost allocation, bulk tagging (10-50 tags/object)
+
+- **Organization**:
+  - Buckets/containers: globally unique names, region specification, policy attachment
+  - Hierarchical structure: delimiter-based navigation ('/'), prefix aggregation, path permissions
+
+- **Advanced Features**:
+  - Object versioning: version IDs, deletion markers, MFA Delete protection
+  - Lifecycle policies: storage class transitions, expiration rules, version pruning
+  - Pre-signed URLs: timed access (seconds to days), IP restrictions, operation limitations
+  - Multipart uploads: 5MB-5GB parts, resumable transfers, concurrent uploads
+  - Event notifications: filterable triggers, messaging integration (SNS, SQS, webhooks)
+  - Cross-region replication: selective replication, conflict resolution, metadata sync
+  - Batch operations: async job model, operation manifests, completion reports
+  - Object locking: WORM storage, governance/compliance modes, legal holds
