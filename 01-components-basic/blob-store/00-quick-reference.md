@@ -130,3 +130,87 @@ A **Blob Store** (Binary Large Object Store) is a distributed storage service op
   - Cross-region replication: selective replication, conflict resolution, metadata sync
   - Batch operations: async job model, operation manifests, completion reports
   - Object locking: WORM storage, governance/compliance modes, legal holds
+
+## 4. Non-Functional Requirements
+
+- **Durability**: 99.999999999% (11 9's) - virtually no data loss
+  - Multiple replicas across regions
+  - Continuous integrity verification with checksums
+  - Automated repair mechanisms
+
+- **Availability**: 99.99% uptime (four 9's)
+  - N+2 redundancy for critical components
+  - Active-active deployment model
+  - <30 second recovery time
+
+- **Performance**:
+  - Metadata operations: <50ms p95, <100ms p99
+  - Small object retrieval: <100ms p95, <200ms p99
+  - Large objects: <200ms first-byte, 100+ MB/s throughput
+  - Writes: <500ms durability acknowledgment
+
+- **Throughput**:
+  - 10,000+ requests/second per tenant
+  - Thousands of concurrent clients
+  - 5x burst capacity
+  - 10+ Gbps bandwidth for premium tenants
+
+- **Capacity Scaling**:
+  - Exabytes of total storage
+  - Billions of objects per tenant
+  - Objects up to 5TB
+  - Linear cost scaling
+
+- **User Scaling**:
+  - Millions of concurrent users
+  - Thousands of tenants with isolation
+  - Global distribution with regional compliance
+  - Multiple client library support
+
+- **Security**:
+  - AES-256 encryption at rest
+  - TLS 1.3 in transit
+  - Customer-managed keys with HSM integration
+  - Fine-grained RBAC at bucket/prefix/object levels
+  - Enterprise IdP integration (OIDC, SAML)
+
+- **Audit & Compliance**:
+  - Complete audit trails
+  - GDPR, HIPAA, CCPA compliance
+  - Tamper-proof logs
+  - Configurable retention and legal hold
+
+- **Observability**:
+  - Real-time health dashboards
+  - <5 minute anomaly detection and alerting
+  - End-to-end request tracing
+  - Customer-facing status page
+
+- **Disaster Recovery**:
+  - RPO: zero data loss
+  - RTO: <1 hour for regional failure
+  - Regular DR exercises
+  - Cross-region replication
+
+- **Cost Efficiency**:
+  - <$0.02/GB for hot storage
+  - Automated tiering and lifecycle management
+  - Compression and deduplication
+  - Bandwidth optimization
+
+- **Environmental Impact**:
+  - PUE below 1.2
+  - 100% renewable energy
+  - Certified hardware recycling
+  - Carbon-neutral operations
+
+- **Backwards Compatibility**:
+  - 18-month support for deprecated APIs
+  - Non-breaking feature additions
+  - Migration tools for clients
+
+- **Serviceability**:
+  - Zero-downtime updates
+  - Independent service components
+  - >95% test coverage
+  - Comprehensive documentation
