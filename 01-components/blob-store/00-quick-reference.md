@@ -86,3 +86,21 @@ A **Blob Store** (Binary Large Object Store) is a distributed storage service op
 - vs. File Systems: No true hierarchy, immutable objects, HTTP access
 - vs. Block Storage: Higher-level abstraction, rich metadata, not mountable
 - vs. Databases: No query language, 10-100x cheaper for large data, no transactions
+
+## 2. Use Cases
+
+- **Media Content Delivery**: Store and serve content (videos, images), integrate with CDNs, support byte-range requests for streaming
+  
+- **Data Backup & Archiving**: Long-term retention with versioning, 80-90% cost reduction vs. block storage, object locking for compliance
+
+- **Log & Metrics Storage**: Scale for unpredictable volume (1+ TB daily), time-based partitioning, compression formats (Parquet/ORC)
+
+- **Data Lakes**: Separate storage from compute, schema-on-read flexibility, integration with analytics tools (Spark, Presto)
+
+- **Static Website Hosting**: Serverless delivery with 99.99% availability, CDN integration, automatic scaling, built-in SSL/TLS
+
+- **Mobile/IoT App Data**: Handle intermittent connectivity, support multipart uploads, client-side buffering, edge preprocessing
+
+- **AI/ML Model Storage**: Version models (1-10GB each) and datasets, centralized management, metadata for lineage tracking
+
+- **Collaborative Workflows**: Share large assets (terabytes) between teams, versioning, fine-grained access controls
