@@ -104,3 +104,29 @@ A **Blob Store** (Binary Large Object Store) is a distributed storage service op
 - **AI/ML Model Storage**: Version models (1-10GB each) and datasets, centralized management, metadata for lineage tracking
 
 - **Collaborative Workflows**: Share large assets (terabytes) between teams, versioning, fine-grained access controls
+
+## 3. Functional Requirements
+
+- **Object Operations**:
+  - Upload objects (PUT): checksumming, content validation, ETag generation, encryption
+  - Download objects (GET): conditional requests, byte-range support, streaming optimization
+  - Delete objects (DELETE): atomic operations, soft-delete options, bulk operations
+  - List objects (LIST): pagination, prefix filtering, delimiter-based hierarchy
+
+- **Metadata Management**:
+  - Custom metadata: key-value pairs (2-4KB limit), system metadata, searchable attributes
+  - Object tagging: tag-based access policies, cost allocation, bulk tagging (10-50 tags/object)
+
+- **Organization**:
+  - Buckets/containers: globally unique names, region specification, policy attachment
+  - Hierarchical structure: delimiter-based navigation ('/'), prefix aggregation, path permissions
+
+- **Advanced Features**:
+  - Object versioning: version IDs, deletion markers, MFA Delete protection
+  - Lifecycle policies: storage class transitions, expiration rules, version pruning
+  - Pre-signed URLs: timed access (seconds to days), IP restrictions, operation limitations
+  - Multipart uploads: 5MB-5GB parts, resumable transfers, concurrent uploads
+  - Event notifications: filterable triggers, messaging integration (SNS, SQS, webhooks)
+  - Cross-region replication: selective replication, conflict resolution, metadata sync
+  - Batch operations: async job model, operation manifests, completion reports
+  - Object locking: WORM storage, governance/compliance modes, legal holds
