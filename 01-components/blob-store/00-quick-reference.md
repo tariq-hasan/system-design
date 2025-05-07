@@ -214,3 +214,60 @@ A **Blob Store** (Binary Large Object Store) is a distributed storage service op
   - Independent service components
   - >95% test coverage
   - Comprehensive documentation
+
+## 5. High-Level Architecture
+
+### Core Components
+
+- **External Facing Layer**
+  - CDN Edge Locations (content caching, TLS termination)
+  - Global Load Balancer (geo-routing, failover, DDoS protection)
+  - DNS Services (location-aware routing)
+
+- **Control Plane**
+  - Configuration & Routing Service (system config, feature flags)
+  - IAM & Policy Service (identity, policy evaluation)
+  - Management Console (administrative interface)
+
+- **Data Plane Gateway**
+  - API Gateway (protocol handling, validation)
+  - Request Router (traffic distribution, circuit breaking)
+
+- **Service Layer**
+  - Authentication & Security Service (auth, crypto)
+  - API Service (business logic, orchestration)
+  - Distributed Cache (metadata, auth results, hot objects)
+
+- **Data Management Layer**
+  - Metadata Service (object mapping, namespaces)
+  - Storage Orchestrator (tier selection, lifecycle)
+
+- **Storage Layer**
+  - Hot Storage (SSD-based, frequent access)
+  - Warm Storage (balanced performance/cost)
+  - Cold Archive (long-term, low-cost)
+
+- **Cross-Cutting Services**
+  - Monitoring & Logging (metrics, alerts, logs)
+  - Background Workers (async jobs, maintenance)
+  - Event Bus (notifications, integration)
+
+### Key Data Flows
+
+- **Read Path**: CDN → Gateway → Auth → Metadata → Storage → Response
+- **Write Path**: Gateway → Auth → Storage → Metadata → Replication
+- **Inter-Region**: Event Bus → Replication Workers → Cross-region transfer
+
+### Regional Deployment Models
+
+- **Single Region**: Simplest deployment, limited DR
+- **Primary/Secondary**: Active-passive, automatic failover
+- **Active/Active**: Multi-region read-write, conflict resolution
+
+### Design Principles
+
+- Layered architecture with clear boundaries
+- Horizontal scalability at every layer
+- Defense in depth security
+- Eventual consistency with clear guarantees
+- Observability by design
