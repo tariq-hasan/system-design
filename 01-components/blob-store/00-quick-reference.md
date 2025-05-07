@@ -7,7 +7,7 @@
 - [4. Non-Functional Requirements](#4-non-functional-requirements)
 - [5. High-Level Architecture](#5-high-level-architecture)
 - [6. Core Components](#6-core-components)
-  - [6.1 API Service](#61-api-service)
+  - [6.1 API Layer](#61-api-layer)
   - [6.2 Metadata Service](#62-metadata-service)
   - [6.3 Object Storage Layer](#63-object-storage-layer)
   - [6.4 Authentication & Authorization](#64-authentication--authorization)
@@ -271,3 +271,20 @@ A **Blob Store** (Binary Large Object Store) is a distributed storage service op
 - Defense in depth security
 - Eventual consistency with clear guarantees
 - Observability by design
+
+## 6. Core Components
+
+### 6.1 API Layer
+- **API Gateway**
+  - Request validation and normalization
+  - Protocol support (REST, gRPC)
+  - Rate limiting and throttling
+  - DDoS protection
+  - TLS termination
+
+- **API Service**
+  - RESTful endpoints (PUT, GET, DELETE, LIST)
+  - Request orchestration
+  - Pre-signed URL generation
+  - Content negotiation
+  - Batch operations
