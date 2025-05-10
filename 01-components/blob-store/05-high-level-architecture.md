@@ -5,7 +5,7 @@ The blob store system follows a cloud-native, distributed architecture designed 
 ## System Components and Data Flows
 
 ```
-                                                  ┌─ Region A ──────────────────────────────────────────────────────────────┐
+                                                  ┌─ Region A ───────────────────────────────────────────────────────────────┐
 ┌─────────────┐                                   │                                                                          │
 │             │                                   │                      ┌─────────────┐                                     │
 │  Client     │◄─────────┐                        │                      │ Management  │                                     │
@@ -15,7 +15,7 @@ The blob store system follows a cloud-native, distributed architecture designed 
        │                 │                        │                             │                                            │
        │                 │                        │                             ▼                                            │
        ▼                 │                        │  ┌─────────────────────────────────────────────┐                         │
-┌─────────────┐   ┌─────┴─────┐                   │  │              Control Plane                  │                         │
+┌─────────────┐   ┌──────┴────┐                   │  │              Control Plane                  │                         │
 │             │   │           │                   │  │  ┌───────────┐    ┌───────────┐             │                         │
 │  CDN Edge   │◄──┤   DNS     │                   │  │  │ Config &  │    │ IAM &     │             │                         │
 │  Locations  │   │   Service │◄──────────────────┼──┼──┤ Routing   │◄───┤ Policy    │             │                         │
@@ -58,12 +58,12 @@ The blob store system follows a cloud-native, distributed architecture designed 
                                                   │                    │                                             │       │
                                                   │                    ▼                                             │       │
                                                   │  ┌─────────────────────────────────────────────┐                 │       │
-                                                  │  │          Data Management Layer               │                 │       │
+                                                  │  │          Data Management Layer              │                 │       │
                                                   │  │                                             │                 │       │
                                                   │  │  ┌───────────┐    ┌───────────┐             │                 │       │
                                                   │  │  │           │    │           │             │                 │       │
                                                   │  │  │ Metadata  │◄───┤ Storage   │             │                 │       │
-                                                  │  │  │ Service   │    │ Orchestrator           │                 │       │
+                                                  │  │  │ Service   │    │ Orchestrator            │                 │       │
                                                   │  │  │           │    │           │             │                 │       │
                                                   │  │  └─────┬─────┘    └─────┬─────┘             │                 │       │
                                                   │  │        │                │                   │                 │       │
@@ -78,7 +78,7 @@ The blob store system follows a cloud-native, distributed architecture designed 
                                                   │  │  ┌───────────┐    ┌───────────┐    ┌──────┐ │                 │       │
                                                   │  │  │           │    │           │    │      │ │                 │       │
                                                   │  │  │ Hot       │    │ Warm      │    │ Cold │ │                 │       │
-                                                  │  │  │ Storage   │    │ Storage   │    │ Archive │              │       │
+                                                  │  │  │ Storage   │    │ Storage   │    │ Archive│                 │       │
                                                   │  │  │           │    │           │    │      │ │                 │       │
                                                   │  │  └─────┬─────┘    └─────┬─────┘    └──────┘ │                 │       │
                                                   │  │        │                │                   │                 │       │
