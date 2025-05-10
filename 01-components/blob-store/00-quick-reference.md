@@ -288,3 +288,17 @@ A **Blob Store** (Binary Large Object Store) is a distributed storage service op
   - Pre-signed URL generation
   - Content negotiation
   - Batch operations
+
+### 6.2 Security & Identity
+- **Authentication Service**
+  - Credential validation (API keys, OAuth, OIDC)
+  - Token issuance and validation
+  - Integration with identity providers
+  - Temporary credential management (STS)
+
+- **Authorization Service**
+  - Policy evaluation engine
+  - Permission checking (IAM, ACLs)
+  - Bucket and object-level permissions
+  - Security policy enforcement (CORS, bucket policies)
+  - VPC endpoint integration
