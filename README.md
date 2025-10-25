@@ -118,11 +118,11 @@ Mastering 1–6 is non-negotiable for all big tech interviews.
 7–9 appear in specialized domains (maps, media, real-time).
 
 ## Tier 2: Real-Time & Collaboration — Strongly Favored in Senior Roles
-1. 🟥 Design a Payment or Wallet System (Stripe, PayPal, Venmo) → Tests ACID guarantees, idempotency, consistency, transaction safety.
-2. 🟧 Design a Live Streaming / Commenting System (Twitch) → Tests real-time pub/sub, fanout, latency, scalability, load balancing.
-3. 🟧 Design a Real-Time Collaboration Tool (Google Docs) → Tests operational transforms or CRDTs, synchronization
-4. 🟧 Design a Location-Based Service (Yelp, Google Maps) → Tests geo-partitioning, caching, location updates.
-5. 🟨 Design a Video Conferencing System (Zoom, Meet) → Tests WebRTC, SFU/Mesh architecture, signaling servers, latency.
+11. 🟥 Design a Payment or Wallet System (Stripe, PayPal, Venmo) → Tests ACID guarantees, idempotency, consistency, transaction safety.
+12. 🟧 Design a Live Streaming / Commenting System (Twitch) → Tests real-time pub/sub, fanout, latency, scalability, load balancing.
+13. 🟧 Design a Real-Time Collaboration Tool (Google Docs) → Tests operational transforms or CRDTs, synchronization
+14. 🟧 Design a Location-Based Service (Yelp, Google Maps) → Tests geo-partitioning, caching, location updates.
+15. 🟨 Design a Video Conferencing System (Zoom, Meet) → Tests WebRTC, SFU/Mesh architecture, signaling servers, latency.
 
 The Payment System is now a staple at Amazon, Stripe, and fintech-like teams.
 Docs-style collaboration is seen at Google, Notion, and Dropbox interviews.
