@@ -167,17 +167,17 @@ Strong differentiator for data infrastructure or search backend teams.
 41. 🟧 Design a Metrics / Logging System (Prometheus, Datadog, Grafana) → Tests distributed collection, aggregation, storage, querying, partitioning, time-series storage, compression, retention.
 42. 🟨 Design a CI/CD Pipeline → Tests orchestration, queuing, scaling.
 
-## Platform Infrastructure (Rare, but impresses Infra Interviewers)
+## Platform Infrastructure — Rare, but impresses Infra Interviewers
 43. 🟧 Design a Configuration Service → Tests dynamic config updates, rollout safety
 44. 🟧 Design a Service Mesh → Tests sidecars, traffic shaping, observability
 45. 🟧 Design a Webhook System → Tests retry logic, deduplication, delivery guarantees
 46. 🟨 Design a Dark Launch System → Tests shadow traffic, rollback safety
 
-## Search & Content Infra (Google / Meta Infra-Level Depth)
+## Search & Content Infra — Google / Meta Infra-Level Depth
 47. 🟧 Design a Content Delivery Network (CDN) → Tests edge caching, DNS, invalidation
 48. 🟧 Design a Unified Search Service → Tests federation, ranking, deduplication
 
-## Data-Intensive & Domain-Specific (Optional Depth)
+## Data-Intensive & Domain-Specific — Optional Depth
 49. 🟧 Design a User Segmentation Service → Tests cohort storage, filtering, targeting
 50. 🟨 Design an Ad Serving System → Tests fairness, low-latency ranking
 51. 🟨 Design an Auction System → Tests bidding, fairness, consistency
