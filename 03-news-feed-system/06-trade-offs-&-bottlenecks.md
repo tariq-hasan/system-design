@@ -192,24 +192,24 @@ Pure Push (Fan-out on Write)
 │ ✓ Consistent ordering               │
 │                                     │
 │ Cons:                               │
-│ ✗ Write amplification (1 → N)      │
-│ ✗ Slow for celebrities             │
-│ ✗ Wasted work for inactive users   │
-│ ✗ Storage explosion                │
+│ ✗ Write amplification (1 → N)       │
+│ ✗ Slow for celebrities              │
+│ ✗ Wasted work for inactive users    │
+│ ✗ Storage explosion                 │
 └─────────────────────────────────────┘
 
 Pure Pull (Fan-out on Read)
 ┌─────────────────────────────────────┐
 │ Pros:                               │
-│ ✓ No write amplification           │
-│ ✓ Works for any follower count     │
+│ ✓ No write amplification            │
+│ ✓ Works for any follower count      │
 │ ✓ No wasted computation             │
 │ ✓ Less storage needed               │
 │                                     │
 │ Cons:                               │
-│ ✗ Slow reads (compute every time)  │
+│ ✗ Slow reads (compute every time)   │
 │ ✗ Complex merge logic               │
-│ ✗ Load spikes during popular posts │
+│ ✗ Load spikes during popular posts  │
 │ ✗ Cache effectiveness reduced       │
 └─────────────────────────────────────┘
 
@@ -1214,22 +1214,22 @@ COST/PERFORMANCE MATRIX
 ┌─────────────────────────────────────────┐
 │ High Cost                               │
 │                                         │
-│  ┌──────────┐         ┌──────────┐     │
-│  │Full Cache│         │Real-time │     │
-│  │All Users │         │Ranking   │     │
-│  │$5K/mo    │         │ML Model  │     │
-│  └──────────┘         │$10K/mo   │     │
-│       ↓                └──────────┘     │
+│  ┌──────────┐         ┌──────────┐      │
+│  │Full Cache│         │Real-time │      │
+│  │All Users │         │Ranking   │      │
+│  │$5K/mo    │         │ML Model  │      │
+│  └──────────┘         │$10K/mo   │      │
+│       ↓               └──────────┘      │
 │  Not worth it              ↓            │
 │                       Worth it          │
 │                                         │
-│  ┌──────────┐         ┌──────────┐     │
-│  │Minimal   │         │80/20     │     │
-│  │Cache     │         │Cache     │     │
-│  │$250/mo   │         │$1K/mo    │◄────┼── Sweet spot
-│  └──────────┘         └──────────┘     │
+│  ┌──────────┐         ┌──────────┐      │
+│  │Minimal   │         │80/20     │      │
+│  │Cache     │         │Cache     │      │
+│  │$250/mo   │         │$1K/mo    │◄─────┼── Sweet spot
+│  └──────────┘         └──────────┘      │
 │       ↓                    ↓            │
-│  Too slow             Just right       │
+│  Too slow             Just right        │
 │                                         │
 │ Low Cost                                │
 └──────────┬──────────────────────────────┘
@@ -1251,7 +1251,7 @@ COST/PERFORMANCE MATRIX
 ╔══════════════════════════════════════════════════════════════════════════╗
 ║                    KEY ARCHITECTURAL TRADE-OFFS                          ║
 ╠═══════════════════╦══════════════════╦══════════════════╦════════════════╣
-║ Decision          ║ What We Chose    ║ Alternative      ║ Why             ║
+║ Decision          ║ What We Chose    ║ Alternative      ║ Why            ║
 ╠═══════════════════╬══════════════════╬══════════════════╬════════════════╣
 ║ Consistency       ║ Eventual (AP)    ║ Strong (CP)      ║ Availability   ║
 ║                   ║                  ║                  ║ matters more   ║
