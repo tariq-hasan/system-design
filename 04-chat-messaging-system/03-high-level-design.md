@@ -274,8 +274,8 @@ Why not MongoDB?
 *“So we have three main layers:*
 
 1. *Connection layer (WebSocket gateways) - handles connections*
-1. *Service layer (stateless logic) - handles business rules*
-1. *Storage layer (persistent data) - handles durability*
+2. *Service layer (stateless logic) - handles business rules*
+3. *Storage layer (persistent data) - handles durability*
 
 *This separation lets us scale each layer independently based on bottlenecks.”*
 
@@ -475,17 +475,17 @@ Create a comparison table:
 - Cassandra’s log-structured merge tree optimized for writes
 - Postgres would struggle without heavy sharding
 
-1. **Time-series data pattern**: Messages naturally ordered by time
+2. **Time-series data pattern**: Messages naturally ordered by time
 
 - Cassandra’s wide-column model perfect for (conversation_id, timestamp) queries
 - No joins needed
 
-1. **Horizontal scalability**: Can add nodes seamlessly
+3. **Horizontal scalability**: Can add nodes seamlessly
 
 - Postgres sharding is manual and painful
 - Cassandra handles it automatically
 
-1. **Multi-region**: Built-in replication
+4. **Multi-region**: Built-in replication
 
 - Critical for global deployment
 
@@ -511,10 +511,10 @@ Create a comparison table:
 *“So that’s the high-level architecture. Now, there are several areas we should dive deeper into to make this production-ready:*
 
 1. **WebSocket Connection Management**: How do we scale to 100M concurrent connections?
-1. **Message Storage Schema**: Exactly how do we model data in Cassandra?
-1. **Ensuring Message Ordering**: Especially in group chats with network delays
-1. **Handling Failures**: What happens when WebSocket servers crash?
-1. **Geographic Distribution**: Multi-region considerations
+2. **Message Storage Schema**: Exactly how do we model data in Cassandra?
+3. **Ensuring Message Ordering**: Especially in group chats with network delays
+4. **Handling Failures**: What happens when WebSocket servers crash?
+5. **Geographic Distribution**: Multi-region considerations
 
 *Which of these would you like me to focus on first, or should I cover them in this order?”*
 
@@ -563,21 +563,21 @@ Create a comparison table:
 
 ## **Common Mistakes to Avoid:**
 
-❌ **Drawing too detailed too soon**: Don’t show DB schemas or API contracts yet
-❌ **Not explaining why**: Every component needs justification
-❌ **Forgetting data flows**: Architecture without flows is incomplete
-❌ **Ignoring alternatives**: Show you considered other options
-❌ **Going past 10 minutes**: You need time for deep dives
-❌ **Not using the whiteboard**: Draw as you talk, don’t just narrate
+- ❌ **Drawing too detailed too soon**: Don’t show DB schemas or API contracts yet
+- ❌ **Not explaining why**: Every component needs justification
+- ❌ **Forgetting data flows**: Architecture without flows is incomplete
+- ❌ **Ignoring alternatives**: Show you considered other options
+- ❌ **Going past 10 minutes**: You need time for deep dives
+- ❌ **Not using the whiteboard**: Draw as you talk, don’t just narrate
 
 -----
 
 ## **Signals You’re Giving as a Senior Engineer:**
 
-✅ **Systems Thinking**: You see how components interact, not just individual pieces
-✅ **Trade-off Analysis**: Every decision has pros/cons, and you articulate them
-✅ **Technology Choices**: You know when to use Cassandra vs Postgres
-✅ **Scalability Awareness**: You think about bottlenecks proactively
-✅ **Communication**: Clear structure, good pacing, uses visuals effectively
+- ✅ **Systems Thinking**: You see how components interact, not just individual pieces
+- ✅ **Trade-off Analysis**: Every decision has pros/cons, and you articulate them
+- ✅ **Technology Choices**: You know when to use Cassandra vs Postgres
+- ✅ **Scalability Awareness**: You think about bottlenecks proactively
+- ✅ **Communication**: Clear structure, good pacing, uses visuals effectively
 
 **You’re now 15 minutes in and perfectly positioned to go deep on the critical areas.**
