@@ -191,12 +191,12 @@ They might say:
 
 ## **Common Mistakes to Avoid in This Phase:**
 
-❌ **Spending too long here (>7 min):** You need time for actual design
-❌ **Not proposing numbers:** Waiting for interviewer to give you everything shows passivity
-❌ **Asking yes/no questions:** Ask open-ended questions that show expertise
-❌ **Not writing anything down:** Capture requirements on the whiteboard
-❌ **Ignoring non-functional requirements:** Scale/latency are as important as features
-❌ **Being too deferential:** You should guide this conversation, not just ask questions
+- ❌ **Spending too long here (>7 min):** You need time for actual design
+- ❌ **Not proposing numbers:** Waiting for interviewer to give you everything shows passivity
+- ❌ **Asking yes/no questions:** Ask open-ended questions that show expertise
+- ❌ **Not writing anything down:** Capture requirements on the whiteboard
+- ❌ **Ignoring non-functional requirements:** Scale/latency are as important as features
+- ❌ **Being too deferential:** You should guide this conversation, not just ask questions
 
 -----
 
