@@ -33,10 +33,10 @@ This is where **senior engineers separate themselves from mid-level candidates**
 #### **Draw the Detailed WebSocket Architecture:**
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                     CLIENT LAYER                        │
-│  [Mobile App]  [Web Client]  [Desktop App]              │
-└──────────┬──────────────┬────────────────┬──────────────┘
+    ┌─────────────────────────────────────────────────────┐
+    │                     CLIENT LAYER                    │
+    │  [Mobile App]  [Web Client]  [Desktop App]          │
+    └──────┬──────────────┬────────────────┬──────────────┘
            │              │                │
            │    ┌─────────▼────────────────▼───────┐
            │    │   Load Balancer (Layer 4)        │
@@ -73,12 +73,12 @@ This is where **senior engineers separate themselves from mid-level candidates**
 *“Here’s what happens when User A sends a message to User B:*
 
 1. *User A’s client sends message via established WebSocket on WS-Server-42*
-1. *WS-Server-42 forwards to Chat Service*
-1. *Chat Service needs to deliver to User B*
-1. *Query Redis: ‘Where is User B connected?’*
-1. *Redis returns: ‘WS-Server-103’*
-1. *Chat Service routes message to WS-Server-103*
-1. *WS-Server-103 pushes to User B over existing WebSocket*
+2. *WS-Server-42 forwards to Chat Service*
+3. *Chat Service needs to deliver to User B*
+4. *Query Redis: ‘Where is User B connected?’*
+5. *Redis returns: ‘WS-Server-103’*
+6. *Chat Service routes message to WS-Server-103*
+7. *WS-Server-103 pushes to User B over existing WebSocket*
 
 *The key insight: WebSocket servers are just connection managers. They don’t know routing logic—that’s in Redis.”*
 
@@ -949,11 +949,11 @@ When Redis reconnects:
 
 ## **Senior-Level Signals You’re Demonstrating:**
 
-✅ **Production Experience**: Specific technologies (Cassandra, Redis, Kafka), not just abstract concepts
-✅ **Quantitative Reasoning**: Exact calculations (10K servers, 290K msg/sec, partition sizes)
-✅ **Failure Handling**: Proactively discuss crash scenarios, not waiting to be asked
-✅ **Trade-off Analysis**: Every decision justified with pros/cons
-✅ **Optimization Thinking**: Caching, batching, compression—shows you’ve built real systems
-✅ **Monitoring Awareness**: Mention metrics and alerts, not just design
+- ✅ **Production Experience**: Specific technologies (Cassandra, Redis, Kafka), not just abstract concepts
+- ✅ **Quantitative Reasoning**: Exact calculations (10K servers, 290K msg/sec, partition sizes)
+- ✅ **Failure Handling**: Proactively discuss crash scenarios, not waiting to be asked
+- ✅ **Trade-off Analysis**: Every decision justified with pros/cons
+- ✅ **Optimization Thinking**: Caching, batching, compression—shows you’ve built real systems
+- ✅ **Monitoring Awareness**: Mention metrics and alerts, not just design
 
 **You’re now perfectly positioned to discuss bottlenecks, edge cases, and wrap up strongly.**
