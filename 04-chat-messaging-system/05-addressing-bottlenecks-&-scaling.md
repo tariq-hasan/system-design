@@ -11,9 +11,9 @@ This phase demonstrates **senior-level operational thinking**. You’re showing 
 *“Now that we have the core architecture, let me proactively identify the bottlenecks we’ll hit at scale and how to address them. I’ll organize this around four dimensions:*
 
 1. *Performance bottlenecks (latency, throughput)*
-1. *Consistency and ordering challenges*
-1. *Storage and data growth*
-1. *Network and infrastructure limits*
+2. *Consistency and ordering challenges*
+3. *Storage and data growth*
+4. *Network and infrastructure limits*
 
 *For each, I’ll identify the problem, quantify the impact, and propose solutions.”*
 
@@ -763,11 +763,11 @@ HYBRID APPROACH (Best):
 
 ## **Senior-Level Signals You’re Demonstrating:**
 
-✅ **Quantitative Analysis**: Every bottleneck has numbers (5K writes/sec, 108 MB, 464 Gbps)
-✅ **Proactive Problem-Solving**: You identify issues before being asked
-✅ **Production Intuition**: These are real problems from real systems
-✅ **Multiple Solutions**: You show alternatives with trade-offs
-✅ **Monitoring-Driven**: You mention detection and alerting
-✅ **Cost Awareness**: You consider infrastructure costs ($2.5M/month)
+- ✅ **Quantitative Analysis**: Every bottleneck has numbers (5K writes/sec, 108 MB, 464 Gbps)
+- ✅ **Proactive Problem-Solving**: You identify issues before being asked
+- ✅ **Production Intuition**: These are real problems from real systems
+- ✅ **Multiple Solutions**: You show alternatives with trade-offs
+- ✅ **Monitoring-Driven**: You mention detection and alerting
+- ✅ **Cost Awareness**: You consider infrastructure costs ($2.5M/month)
 
 **You’ve now demonstrated deep expertise in building systems that actually scale. Ready to discuss edge cases and monitoring next!**
