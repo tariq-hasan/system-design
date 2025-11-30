@@ -783,11 +783,11 @@ This phase demonstrates **production maturity**. Senior engineers don’t just b
 
 ## **Senior-Level Signals You’re Demonstrating:**
 
-✅ **Production Battle Scars**: These are real issues you’ve debugged at 3 AM
-✅ **Defense in Depth**: Multiple layers of protection (rate limiting, validation, monitoring)
-✅ **Specific Numbers**: Exact thresholds (p99 < 200ms, 0.1% error rate)
-✅ **Operational Thinking**: Runbooks, dashboards, on-call readiness
-✅ **Failure Modes**: You’ve thought through what breaks and how to detect it
-✅ **Pragmatic Trade-offs**: 5-minute dedup window, 1% sampling for logs
+- ✅ **Production Battle Scars**: These are real issues you’ve debugged at 3 AM
+- ✅ **Defense in Depth**: Multiple layers of protection (rate limiting, validation, monitoring)
+- ✅ **Specific Numbers**: Exact thresholds (p99 < 200ms, 0.1% error rate)
+- ✅ **Operational Thinking**: Runbooks, dashboards, on-call readiness
+- ✅ **Failure Modes**: You’ve thought through what breaks and how to detect it
+- ✅ **Pragmatic Trade-offs**: 5-minute dedup window, 1% sampling for logs
 
 **You’ve now proven you can ship AND operate this system in production. Time to wrap up with trade-offs and final thoughts!**
