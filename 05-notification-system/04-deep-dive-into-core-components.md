@@ -1,4 +1,4 @@
-# Minutes 16-35: Deep Dive into Core Components (Expanded)
+# Minutes 16-35: Deep Dive into Core Components
 
 ## **Pre-Deep Dive: Prioritization (30 seconds)**
 
@@ -282,13 +282,11 @@ def process_with_retry(notification):
 **DLQ Handling (30 seconds):**
 
 1. **Alert on spike**: If DLQ messages > threshold, page on-call
-1. **Classification**: Categorize errors (invalid tokens, provider outage, etc.)
-1. **Auto-remediation**:
-
-- Invalid tokens → Remove from user profile
-- Rate limit errors → Slow down that channel
-
-1. **Manual replay**: Dashboard to resend after fixing root cause
+2. **Classification**: Categorize errors (invalid tokens, provider outage, etc.)
+3. **Auto-remediation**:
+    - Invalid tokens → Remove from user profile
+    - Rate limit errors → Slow down that channel
+4. **Manual replay**: Dashboard to resend after fixing root cause
 
 -----
 
