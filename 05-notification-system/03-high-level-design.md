@@ -1,4 +1,4 @@
-# Minutes 9-15: High-Level Design (Expanded)
+# Minutes 9-15: High-Level Design
 
 ## **Minute 9: Draw the Basic Architecture (60-90 seconds)**
 
