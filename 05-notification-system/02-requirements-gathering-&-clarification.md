@@ -1,4 +1,4 @@
-# Minutes 1-8: Requirements Gathering & Clarification (Expanded)
+# Minutes 1-8: Requirements Gathering & Clarification
 
 ## **Minute 1-2: Functional Scope Clarification**
 
@@ -160,21 +160,21 @@ Listen for cues:
 
 ## **Common Mistakes to Avoid:**
 
-❌ **Spending too long** (>10 minutes) on requirements
-❌ **Not writing down** agreed-upon numbers and requirements
-❌ **Assuming requirements** without asking
-❌ **Asking yes/no questions** instead of open-ended ones
-❌ **Not confirming** what’s in/out of scope
+❌ **Spending too long** (>10 minutes) on requirements  
+❌ **Not writing down** agreed-upon numbers and requirements  
+❌ **Assuming requirements** without asking  
+❌ **Asking yes/no questions** instead of open-ended ones  
+❌ **Not confirming** what’s in/out of scope  
 ❌ **Forgetting to ask about scale** early (it affects everything)
 
 ## **What Success Looks Like:**
 
-✅ Clear understanding of functional scope
-✅ Concrete numbers for scale (users, QPS, data volume)
-✅ Defined latency and reliability requirements
-✅ Agreement on must-have vs nice-to-have features
-✅ Shared understanding with interviewer (they’re nodding along)
-✅ Written notes on whiteboard for reference
+✅ Clear understanding of functional scope  
+✅ Concrete numbers for scale (users, QPS, data volume)  
+✅ Defined latency and reliability requirements  
+✅ Agreement on must-have vs nice-to-have features  
+✅ Shared understanding with interviewer (they’re nodding along)  
+✅ Written notes on whiteboard for reference  
 ✅ Finished in 8 minutes or less, ready to design
 
 -----
