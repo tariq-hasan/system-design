@@ -1,4 +1,4 @@
-# Minutes 36-45: Scale & Performance (Expanded)
+# Minutes 36-45: Scale & Performance
 
 ## **Minute 36: Establish Scale Requirements (60 seconds)**
 
