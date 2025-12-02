@@ -1,4 +1,4 @@
-# Minutes 46-52: Trade-offs & Failure Scenarios (Expanded)
+# Minutes 46-52: Trade-offs & Failure Scenarios
 
 ## **Minute 46: Opening Trade-offs Discussion (60 seconds)**
 
