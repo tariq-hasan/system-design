@@ -1,4 +1,4 @@
-# Minutes 53-58: Additional Considerations (Expanded)
+# Minutes 53-58: Additional Considerations
 
 ## **Minute 53: Analytics & Delivery Tracking (60 seconds)**
 
@@ -196,20 +196,20 @@ GROUP BY provider, channel;
 │  └─ Input validation (prevent injection)        │
 │                                                 │
 │  Layer 2: Data Security                         │
-│  ├─ Encryption in transit (TLS 1.3)            │
-│  ├─ Encryption at rest (AES-256)               │
-│  ├─ PII tokenization (phone numbers, emails)   │
-│  └─ Secrets management (Vault, AWS KMS)        │
+│  ├─ Encryption in transit (TLS 1.3)             │
+│  ├─ Encryption at rest (AES-256)                │
+│  ├─ PII tokenization (phone numbers, emails)    │
+│  └─ Secrets management (Vault, AWS KMS)         │
 │                                                 │
 │  Layer 3: Network Security                      │
 │  ├─ VPC isolation                               │
-│  ├─ Private subnets for databases              │
-│  ├─ Security groups / Firewall rules           │
-│  └─ DDoS protection (CloudFlare, AWS Shield)   │
+│  ├─ Private subnets for databases               │
+│  ├─ Security groups / Firewall rules            │
+│  └─ DDoS protection (CloudFlare, AWS Shield)    │
 │                                                 │
 │  Layer 4: Application Security                  │
-│  ├─ Dependency scanning (Snyk, Dependabot)    │
-│  ├─ SAST/DAST (static/dynamic analysis)       │
+│  ├─ Dependency scanning (Snyk, Dependabot)      │
+│  ├─ SAST/DAST (static/dynamic analysis)         │
 │  ├─ Container scanning                          │
 │  └─ Regular security audits                     │
 │                                                 │
